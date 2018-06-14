@@ -1,15 +1,24 @@
 # Campaign-Link-Generator
-A Flexible Campaign Link Generator for UTM links, ITM links, and more!
+A Flexible Campaign Link Generator for using UTM and ITM links.
 
 ## Notes
 
 ### General Concept
 
-The campaign link generator will guide the user through creating campaign links. The UI will be a step by step process, with the final step showing all the information all at once. Familiar users can skip to the final step. 
+The campaign link generator will create campaign links for the user. 
+The developer can modify parameters with a settings object.
 
 #### Specifications
 
-* bootstrap-based
+There are two functions:
+
+1. initGenerator: puts hostname into form, [activates suggestions for campaign names,] builds table of sources, removes optional parameters
+2. generateLink: fetches form data, validates form data, concatenates and displays the link, displays copy button
+
+##### Dependencies
+
+* bootstrap.js
+* clipboard.js
 
 ### Setup
 
@@ -19,6 +28,7 @@ The developer will be able to create and customize the structure of the generato
 
 The settings file defines the following:
 
-* which campaign types are available
-* the forms under each campaign type
-* the type of response you are looking for
+* the base url (host name)
+* campaign names available for suggestions
+* internal and external mediums and sources
+* toggles for optional parameters
