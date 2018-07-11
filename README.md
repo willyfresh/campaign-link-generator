@@ -5,7 +5,7 @@ A Flexible Campaign Link Generator for using UTM and ITM links.
 
 ### General Concept
 
-Urchin links are already used pretty universally to track traffic sources.
+Urchin links are  used universally to track traffic sources.
 This generator simplifies creating urchin links using both external (utm_*) and internal (itm_*) methods of tracking.
 Please note that using ITM parameters requires additional setup in GTM and Analytics Settings.
 The campaign link generator will create campaign links for the user. 
@@ -25,7 +25,7 @@ There are two functions:
 
 ### Setup
 
-The developer will be able to create and customize the structure of the generator using a json object. This json object will live in a separate settings file.
+The developer will be able to create and customize the structure of the generator using a json object. This json object will live on the target page.
 
 ### Structure of the settings
 
