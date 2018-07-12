@@ -1,20 +1,23 @@
 <html>
-  <head>
-    <title>Campaign Link Generator</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Will Floyd">
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <!-- custom css -->
-    <style>
-      /*customcss*/
-    </style>
-  </head>
-  <body>
-<!--
-removing navigation until i have some conent written for the planned pages
-========================================================================== 
+
+<head>
+	<title>Campaign Link Generator</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Will Floyd">
+	<!-- bootstrap css -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<!-- custom css -->
+	<style>
+		/*customcss*/
+	</style>
+</head>
+
+<body>
+	<!--
+================================================
+navigation pending content for additional pages
+================================================ 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="demo.html">Campaign Link Generator</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,139 +47,131 @@ removing navigation until i have some conent written for the planned pages
       </div>
     </nav>
 -->
-    <div class="container">
-			<div id="Campaign-Link-Generator">
-				<h1>Campaign Link Generator</h1>
-				<p>California Office of Statewide Health Planning and Development (OSHPD)</p>
+	<div class="container">
+		<div id="Campaign-Link-Generator">
+			<h1>Campaign Link Generator</h1>
+			<p>California Office of Statewide Health Planning and Development (OSHPD)</p>
+			<hr>
+
+			<!-- URL -->
+			<div id="url-param" class="form-group">
+				<label for="url-param-entry" id="url-param-label"><h2>Page URL</h2></label>
+				<div class="input-group input-group-sm">
+					<input type="text" class="form-control" id="url-param-entry" aria-describedby="url-param-label" placeholder="example/dir/page.html">
+				</div>
 				<hr>
-
-				<!-- URL -->
-				<div id="url-param" class="form-group">
-					<label for="url-param-entry" id="url-param-label"><h2>Page URL</h2></label>
-					<p>Copy and Paste the Link here
-					<div class="input-group input-group-sm">
-						<input type="text" class="form-control" id="url-param-entry" aria-describedby="url-param-label">
-					</div>
-					<hr>
-				</div>
-
-				<!-- CAMPAIGN -->
-				<div id="campaign-param" class="form-group">
-					<label for="campaign-param-entry" id="campaign-param-label"><h2>Campaign Name</h2></label>
-					<input type="text" class="form-control" id="campaign-param-entry"  aria-describedby="campaign-param-help">
-					<small id="campaign-param-help" class="form-text text-muted">Product, promo code, or slogan. Please use an approved campaign name. Be sure to follow our campaign parameter specifications.</small>
-					<hr>
-				</div>
-
-				<!-- SOURCE/MEDIUM -->
-				<div id="source-param" class="form-group">
-					<label for="source-param-entry" id="source-param-label"><h2>Campaign Source</h2></label>
-					<table class="table table-bordered">
-						<thead>
-							<tr>
-								<th>External Sources</th>
-								<th>Internal Sources</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr><td colspan="2">Source selections loading...</td></tr>
-						</tbody>
-					</table>
-
-					<small id="utm-source-help" class="form-text text-muted">The referrer (e.g. facebook, mailchimp). Marketing medium is determined automatically.</small>
-					<hr>
-				</div>
-
-				<!-- CONTENT -->
-				<div id="content-param" class="form-group">
-					<label for="utm-content" id="content-param-label"><h2>Link Description</h2></label>
-					<input type="text" class="form-control" id="content-param-entry"  aria-describedby="content-param-help">
-					<small id="content-param-help" class="form-text text-muted">Use to differentiate ads. Be sure to follow our campaign parameter specifications.</small>
-					<hr>
-				</div>
-
-				<!-- TERMS -->
-				<div id="term-param" class="form-group">
-					<label for="term-param-entry" id="term-param-label"><h2>Paid Keywords</h2></label>
-					<input type="text" class="form-control" id="term-param-entry"  aria-describedby="term-param-help">
-					<small id="term-param-help" class="form-text text-muted"></small>
-					<hr>
-				</div>
-
-				<!-- RESULTS -->
-				<div id="generated-url" class="">
-					<h2>Results</h2>
-					<div class="p-3 mb-2 bg-light text-dark">
-						<p id="gen-result"></p>
-						<p id="gen-buttons">
-							<button type="button" class="btn btn-outline-primary" onclick="generateLink();">Generate Link</button>
-						</p>
-					</div>
-				</div>
-
 			</div>
-    </div>
-    <!-- bootstraps -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-		<!-- dependencies -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
 
-    <!-- custom javascript -->
-		<script src="link-generator.min.js"></script>
+			<!-- CAMPAIGN -->
+			<div id="campaign-param" class="form-group">
+				<label for="campaign-param-entry" id="campaign-param-label"><h2>Campaign Name</h2></label>
+				<div class="autocomplete" style="position: relative;">
+					<input type="text" class="form-control" id="campaign-param-entry" aria-describedby="campaign-param-help">
+				</div>
+				<small id="campaign-param-help" class="form-text text-muted">Product, promo code, or slogan. Please use an approved campaign name. Be sure to follow our campaign parameter specifications.</small>
+				<hr>
+			</div>
 
-    <script type="text/javascript">
-			
-			/*
-==============================
-generator settings
-puts all our eggs in one json
-==============================
-*/
+			<!-- SOURCE/MEDIUM -->
+			<div id="source-param" class="form-group">
+				<label for="source-param-entry" id="source-param-label"><h2>Campaign Source</h2></label>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>External Sources</th>
+							<th>Internal Sources</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="2">Source selections loading...</td>
+						</tr>
+					</tbody>
+				</table>
 
-const settings = {
-	'domain':'https://oshpd.ca.gov/',
-	'campaigns':[ // autocomplete suggestions
-		'CABG Report',
-		'SLRP 2018'
-	],
-	'sources':{ 
-		'external':{ // UTM
-			'email':[
-				'StreamSend',
-				'MailChimp'
+				<small id="utm-source-help" class="form-text text-muted">The referrer (e.g. facebook, mailchimp). Marketing medium is determined automatically.</small>
+				<hr>
+			</div>
+
+			<!-- CONTENT -->
+			<div id="content-param" class="form-group">
+				<label for="utm-content" id="content-param-label"><h2>Link Description</h2></label>
+				<input type="text" class="form-control" id="content-param-entry" aria-describedby="content-param-help">
+				<small id="content-param-help" class="form-text text-muted">Use to differentiate ads. Be sure to follow our campaign parameter specifications.</small>
+				<hr>
+			</div>
+
+			<!-- TERMS -->
+			<div id="term-param" class="form-group">
+				<label for="term-param-entry" id="term-param-label"><h2>Paid Keywords</h2></label>
+				<input type="text" class="form-control" id="term-param-entry" aria-describedby="term-param-help">
+				<small id="term-param-help" class="form-text text-muted"></small>
+				<hr>
+			</div>
+
+			<!-- RESULTS -->
+			<div id="generated-url" class="">
+				<h2>Results</h2>
+				<div class="p-3 mb-2 bg-light text-dark">
+					<p id="gen-result"></p>
+					<p id="gen-buttons">
+						<button type="button" class="btn btn-outline-primary" id="link-generator">Generate Link</button>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- bootstraps -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+	<!-- dependencies -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+
+	<!-- custom javascript -->
+
+	<script type="text/javascript">
+		// generator settings:
+		// easily customize the generator
+		// there might be a better way to do this
+
+		const clgSettings = {
+			'domain': 'https://oshpd.ca.gov/',
+			'campaigns': [ // autocomplete suggestions
+				'CABG Report',
+				'SLRP 2018',
+				'Great Green Gables Flyer',
+				'Test, this is test'
 			],
-			'social':[
-				'Facebook',
-				'Twitter',
-				'Linkedin'
-			]
-		},
-		'internal':{ // ITM
-			'website':[
-				'Front-Page-Carousel',
-				'Atlas-Decommission',
-				'Pop-up-Promo'
-			]
+			'sources': { // source table data
+				'external': { // utm_
+					'email': [
+						'StreamSend',
+						'MailChimp'
+					],
+					'social': [
+						'Facebook',
+						'Twitter',
+						'Linkedin'
+					]
+				},
+				'internal': { // itm_
+					'website': [
+						'Front-Page-Carousel',
+						'Atlas-Decommission',
+						'Pop-up-Promo'
+					]
+				}
+			},
+			// exclude the following by changing value to 'no'.
+			// there's probably a better way to do this
+			'content': 'anything but no',
+			'term': 'no'
 		}
-	},
-	'content':'anything but no',
-	'term':'no'
-}
-/*
-============================================
-source table arrays made global
-used on initialization to build table
-used during generation to find checked radio
-=============================================
-*/
-const extSourceTable = [];
-const intSourceTable = [];
+	</script>
+	<!-- development script -->
+	<script src="src/index.js"></script>
+</body>
 
-      $(function(){
-				initGenerator();
-      });
-    </script>
-  </body>
 </html>
