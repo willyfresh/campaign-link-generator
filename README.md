@@ -7,16 +7,22 @@ A Flexible Campaign Link Generator for using UTM and ITM links.
 
 Urchin links are  used universally to track traffic sources.
 This generator simplifies creating urchin links using both external (utm_*) and internal (itm_*) methods of tracking.
-Please note that using ITM parameters requires additional setup in GTM and Analytics Settings.
+Please note that [using ITM parameters requires additional setup in GTM and Analytics Settings](https://www.smashingmagazine.com/2017/08/tracking-internal-marketing-campaigns-google-analytics/#creating-custom-dimensions-in-google-analytics).
 The campaign link generator will create campaign links for the user. 
 The developer can modify parameters with a settings object.
 
 #### Specifications
 
-There are two functions:
+##### Basic Functions
 
-1. initGenerator: puts hostname into form, [activates suggestions for campaign names,] builds table of sources, removes optional parameters
-2. generateLink: fetches form data, validates form data, concatenates and displays the link, displays copy button
+1. initializes the page using settings data from a global object
+2. fetches form data and generates the urchin link
+
+##### Upcoming Features
+
+* validates form data - limits characters
+* autocomplete suggestions for campaign names
+* other small improvements (handling errors)
 
 ##### Dependencies
 
