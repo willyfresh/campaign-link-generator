@@ -11,20 +11,20 @@ Please note that [using ITM parameters requires additional setup in GTM and Anal
 The campaign link generator will create campaign links for the user. 
 The developer can modify parameters with a settings object.
 
-#### Specifications
+### Specifications
 
-##### Basic Functions
+#### Basic Functions
 
 1. initializes the page using settings data from a global object
 2. fetches form data and generates the urchin link
 
-##### Upcoming Features
+#### Upcoming Features
 
 * validates form data - limits characters
 * autocomplete suggestions for campaign names
 * other small improvements (handling errors)
 
-##### Dependencies
+#### Dependencies
 
 * bootstrap.js
 * clipboard.js
