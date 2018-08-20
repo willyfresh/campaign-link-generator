@@ -196,8 +196,6 @@
 		$('#gen-buttons').append(' <button id="copyButton" class="btn btn-outline-primary" data-clipboard-text="' + clgSettings.link.full + '">Copy to Clipboard</button>');
 		new ClipboardJS('#copyButton');
 
-		console.log(clgSettings); // show me the object!
-
 	});
 
 }());
