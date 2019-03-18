@@ -14,110 +14,46 @@
 </head>
 
 <body>
-	<!--
-================================================
-navigation pending content for additional pages
-================================================ 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="demo.html">Campaign Link Generator</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="demo.html">Demo</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="docsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Docs
-            </a>
-            <div class="dropdown-menu" aria-labelledby="docsDropdown">
-              <a class="dropdown-item" href="docs.html#start">Getting Started</a>
-              <a class="dropdown-item" href="docs.html#specs">Specifications</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="docs.html#campaigns">Approved Campaigns</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
--->
 	<div class="container">
 		<div id="Campaign-Link-Generator">
-			<h1>Campaign Link Generator</h1>
-			<p>California Office of Statewide Health Planning and Development (OSHPD)</p>
-			<hr>
-
+			<h2>Campaign Link Generator</h3>
+			<p>Add UTM and ITM parameters to your links</p>
+			
 			<!-- URL -->
-			<div id="url-param" class="form-group">
-				<label for="url-param-entry" id="url-param-label"><h2>Page URL</h2></label>
-				<div class="input-group input-group-sm">
-					<input type="text" class="form-control" id="url-param-entry" aria-describedby="url-param-label" placeholder="example/dir/page.html">
-				</div>
-				<hr>
+			<div id="url-param" class="form-group has-danger">
+				<label for="url-param-entry" id="url-param-label"><h3>Page URL</h3></label>
+				<input type="url" class="form-control form-control-danger" id="url-param-entry" aria-describedby="url-param-label" placeholder="http://example.com/dir/page.html">
+				<small id="campaign-param-help" class="form-text text-muted">Copy and paste the full URL, including https://</small>
 			</div>
 
 			<!-- CAMPAIGN -->
 			<div id="campaign-param" class="form-group">
-				<label for="campaign-param-entry" id="campaign-param-label"><h2>Campaign Name</h2></label>
-				<div class="autocomplete" style="position: relative;">
-					<input type="text" class="form-control" id="campaign-param-entry" aria-describedby="campaign-param-help">
-				</div>
-				<small id="campaign-param-help" class="form-text text-muted">Product, promo code, or slogan. Please use an approved campaign name. Be sure to follow our campaign parameter specifications.</small>
-				<hr>
-			</div>
-
-			<!-- SOURCE/MEDIUM -->
-			<div id="source-param" class="form-group">
-				<label for="source-param-entry" id="source-param-label"><h2>Campaign Source</h2></label>
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th>External Sources</th>
-							<th>Internal Sources</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td colspan="2">Source selections loading...</td>
-						</tr>
-					</tbody>
-				</table>
-
-				<small id="utm-source-help" class="form-text text-muted">The referrer (e.g. facebook, mailchimp). Marketing medium is determined automatically.</small>
-				<hr>
+				<label for="campaign-param-entry" id="campaign-param-label"><h3>Campaign Name</h3></label>
+				<input type="text" class="form-control" id="campaign-param-entry" aria-describedby="campaign-param-help">
+				<small id="campaign-param-help" class="form-text text-muted">Collaborate with each other to match this for each release.</small>
 			</div>
 
 			<!-- CONTENT -->
 			<div id="content-param" class="form-group">
-				<label for="utm-content" id="content-param-label"><h2>Link Description</h2></label>
+				<label for="utm-content" id="content-param-label"><h3>Content Description</h3></label>
 				<input type="text" class="form-control" id="content-param-entry" aria-describedby="content-param-help">
-				<small id="content-param-help" class="form-text text-muted">Use to differentiate ads. Be sure to follow our campaign parameter specifications.</small>
-				<hr>
+				<small id="content-param-help" class="form-text text-muted">Describes the link being clicked.</small>
 			</div>
 
 			<!-- TERMS -->
 			<div id="term-param" class="form-group">
-				<label for="term-param-entry" id="term-param-label"><h2>Paid Keywords</h2></label>
+				<label for="term-param-entry" id="term-param-label"><h3>Ads Terms</h3></label>
 				<input type="text" class="form-control" id="term-param-entry" aria-describedby="term-param-help">
-				<small id="term-param-help" class="form-text text-muted"></small>
-				<hr>
+				<small id="term-param-help" class="form-text text-muted">Rarely used parameter for search terms.</small>
 			</div>
+			
+			<p id="gen-buttons">
+				<button type="button" class="btn btn-outline-primary" id="link-generator">Generate Links</button>
+			</p>
 
 			<!-- RESULTS -->
 			<div id="generated-url" class="">
-				<h2>Results</h2>
-				<div class="p-3 mb-2 bg-light text-dark">
-					<p id="gen-result"></p>
-					<p id="gen-buttons">
-						<button type="button" class="btn btn-outline-primary" id="link-generator">Generate Link</button>
-					</p>
-				</div>
+				<div class="p-3 mb-2 bg-light text-dark" id="gen-result">Results will appear here</div>
 			</div>
 
 		</div>
@@ -126,52 +62,12 @@ navigation pending content for additional pages
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+	
 	<!-- dependencies -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
 
 	<!-- custom javascript -->
-
-	<script type="text/javascript">
-		// generator settings:
-		// easily customize the generator
-		// there might be a better way to do this
-
-		const clgSettings = {
-			'domain': 'https://oshpd.ca.gov/',
-			'campaigns': [ // autocomplete suggestions
-				'CABG Report',
-				'SLRP 2018',
-				'Great Green Gables Flyer',
-				'Test, this is test'
-			],
-			'sources': { // source table data
-				'external': { // utm_
-					'email': [
-						'StreamSend',
-						'MailChimp'
-					],
-					'social': [
-						'Facebook',
-						'Twitter',
-						'Linkedin'
-					]
-				},
-				'internal': { // itm_
-					'website': [
-						'Front-Page-Carousel',
-						'Atlas-Decommission',
-						'Pop-up-Promo'
-					]
-				}
-			},
-			// exclude the following by changing value to 'no'.
-			// there's probably a better way to do this
-			'content': 'anything but no',
-			'term': 'no'
-		}
-	</script>
-	<!-- development script -->
-	<script src="src/index.js"></script>
+	<script src="index.js"></script>
 </body>
 
 </html>
