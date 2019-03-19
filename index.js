@@ -100,9 +100,9 @@ $('#link-generator').click(function() {
 	obj.links.forEach(function(link) {
 
         obj.htmlOutput += '<p>'
-          +'<button class="copyURL btn btn-default" data-clipboard-text="'
+          +'<a href="#" class="copyURL btn btn-default" data-clipboard-text="'
           + link
-          + '"> Copy </button> '
+          + '"> Copy </a> '
           + '<span class="URLdisplay">'
           + link
           + '</span></p>\n';
