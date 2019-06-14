@@ -14,11 +14,13 @@
 </head>
 
 <body>
-	<div class="container">
+	<div class="container" id="gen-container">
+
 		<div id="Campaign-Link-Generator">
+			
 			<h2>Campaign Link Generator</h3>
 			<p>Add UTM and ITM parameters to your links</p>
-			
+
 			<!-- URL -->
 			<div id="url-param" class="form-group has-danger">
 				<label for="url-param-entry" id="url-param-label"><h3>Page URL</h3></label>
@@ -46,7 +48,7 @@
 				<input type="text" class="form-control" id="term-param-entry" aria-describedby="term-param-help">
 				<small id="term-param-help" class="form-text text-muted">Rarely used parameter for search terms.</small>
 			</div>
-			
+
 			<p id="gen-buttons">
 				<button type="button" class="btn btn-outline-primary" id="link-generator">Generate Links</button>
 			</p>
@@ -57,12 +59,14 @@
 			</div>
 
 		</div>
+		
 	</div>
+
 	<!-- bootstraps -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-	
+
 	<!-- dependencies -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
 
