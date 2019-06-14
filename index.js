@@ -21,6 +21,10 @@ const obj = {
 		'external': [ // utm_
 			{
 				'medium': 'email',
+				'source': 'ManualEmail'
+			},
+			{
+				'medium': 'email',
 				'source': 'Campaigner'
 			},
 			{
@@ -100,7 +104,7 @@ $('#link-generator').click(function() {
 	obj.links.forEach(function(link) {
 
         obj.htmlOutput += '<p>'
-          +'<a href="#" class="copyURL btn btn-default" data-clipboard-text="'
+          +'<a class="copyURL btn btn-outline-dark" href="#" data-clipboard-text="'
           + link
           + '"> Copy </a> '
           + '<span class="URLdisplay">'
