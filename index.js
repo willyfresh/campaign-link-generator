@@ -1,130 +1,104 @@
-/*
- *
- * Campaign Link Generator for UTM/ITM
- * Mozilla Public License
- * Version: 0.0.4
- *
- */
-
-(function($){
-
-/*
 ================
  INITIALIZATION
 ================
 */
 
-const obj = {
-	'url': '',
-	'campaign': '',
-	'sources': { // source table data
-		'external': [ // utm_
-			{
-				'medium': 'email',
-				'source': 'ManualEmail'
-			},
-			{
-				'medium': 'email',
-				'source': 'Campaigner'
-			},
-			{
-				'medium': 'social',
-				'source': 'Facebook'
-			},
-			{
-				'medium': 'social',
-				'source': 'Twitter'
-			},
-			{
-				'medium': 'social',
-				'source': 'Linkedin'
-			}
-		],
-		'internal': [ // itm_
-		/* not in use
-			{
-				'medium': 'website',
-				'source': 'page area'
-			}
-		*/
-		]
-	},
-	'links': [],
-	'htmlOutput': ''
+
+ltObj = {
+    'url': '',
+    'campaign': '',
+    'term': '',
+    'd_attribute': [],
+    'htmlOutput': [],
+    'htmlCopy': ''
+};
+//force HTTPS compliance
+function checkProtocol(iURL) {
+    var pURL;
+    if (!(iURL.search(/[^:\/\/]*$/) == 0)) {
+        pURL = iURL.match(/[^:\/\/]*$/);
+        pURL = 'https://' + pURL;
+
+    } else if (!(iURL.search(/[^:\/\/]*$/) == 1)) {
+        pURL = iURL;
+        pURL = 'https://' + pURL;
+    }
+    return pURL;
 }
 
-/*
-================
- LINK GENERATOR
-================
-*/
+function GenerateLinks() {
 
-$('#link-generator').click(function() {
+    ltObj.d_attribute = [];
+    ltObj.htmlOutput = [];
+    ltObj.htmlCopy = '';
+//Checkbox Listener - Push HTML Custom attr data in
+    $("#link-param").find("input[type=checkbox]").each(function() {
 
-	obj.url = document.getElementById('url-param-entry').value.toLowerCase();
-	obj.campaign = document.getElementById('campaign-param-entry').value.replace(/[\s\?\&]/g, '_');
-	obj.content = document.getElementById('content-param-entry').value;
-	obj.term = document.getElementById('term-param-entry').value;
-	obj.links = [];
-	
-	// loop external sources and add to links
+        if ($(this).is(":checked")) {
+            var d_source = $(this).attr('data-source');
+            $(this).attr('data-source');
+            var d_medium = $(this).attr('data-medium');
+            ltObj.d_attribute.push({
+                "d_source": d_source,
+                "d_medium": d_medium
+            });
+        }
+    });
+//text validation for each entry
+    ltObj.url = $('#url-param-entry').val().toLowerCase();
+    ltObj.url = checkProtocol(ltObj.url);
+    ltObj.campaign = $('#campaign-param-entry').val().replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '').replace(/\s+/g, '_');
+    //$('#campaign-param-entry').validateField();
+    ltObj.content = $('#content-param-entry').val().replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '').replace(/\s+/g, '_');
+    ltObj.term = $('#term-param-entry').val().replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '').replace(/\s+/g, '_');
 
-	obj.sources.external.forEach(function(item) {
+//Generate links
+    ltObj.d_attribute.forEach(function(element) {
 
-		let thisLink = obj.url + '?';
-		if ( obj.campaign ) thisLink += 'utm_campaign=' + obj.campaign + '&';
-		thisLink += 'utm_medium=' + item.medium + '&';
-		thisLink += 'utm_source=' + item.source;
-		if ( obj.content ) thisLink += '&utm_content=' + obj.content;
-		if ( obj.term ) thisLink += '&utm_term=' + obj.term;
-		
-		obj.links.push(thisLink);
+        thisLink = ltObj.url + '?';
+        if (element.d_source == 'Internal') {
+            if (ltObj.campaign) thisLink += 'itm_campaign=' + ltObj.campaign + '&';
+            thisLink += 'itm_source=' + element.d_source + '&';
+            thisLink += 'itm_medium=' + element.d_medium;
 
-	});
-	
-	// loop internal sources and add to links
+            if (ltObj.content) thisLink += '&itm_content=' + ltObj.content;
+            if (ltObj.term) thisLink += '&itm_term=' + ltObj.term;
+        } else {
+            if (ltObj.campaign) thisLink += 'utm_campaign=' + ltObj.campaign + '&';
+            thisLink += 'utm_source=' + element.d_source + '&';
+            thisLink += 'utm_medium=' + element.d_medium;
 
-	obj.sources.internal.forEach(function(item) {
+            if (ltObj.content) thisLink += '&utm_content=' + ltObj.content;
+            if (ltObj.term) thisLink += '&utm_term=' + ltObj.term;
+        }
+        console.log(element.d_source);
+        ltObj.htmlOutput.push(thisLink);
+    });
 
-		let thisLink = obj.url + '?';
-		if ( obj.campaign ) thisLink += 'itm_campaign=' + obj.campaign + '&';
-		thisLink += 'itm_medium=' + item.medium + '&';
-		thisLink += 'itm_source=' + item.source;
-		if ( obj.term ) thisLink += '&itm_content=' + obj.content;
-		if ( obj.term ) thisLink += '&itm_term=' + obj.term;
-		
-		obj.links.push(thisLink);
+//URL HTML generator 
+    ltObj.htmlOutput.forEach(function(link) {
+        ltObj.htmlCopy += '<p>'+
+            '<a href="#" class="copyURL btn btn-default" data-clipboard-text="' +
+            link +
+            '"> Copy </a> ' +
+            '<span class="URLdisplay">' +
+            link +
+            '</span></p>\n';
+    });
+    $('#gen-result').html(ltObj.htmlCopy);
+}
 
-	});
-	
-	// loop link list and create copy buttons
-	
-	obj.htmlOutput = '';
+$('#gen-result').html(ltObj.htmlCopy);
 
-	obj.links.forEach(function(link) {
-
-        obj.htmlOutput += '<p>'
-          +'<a class="copyURL btn btn-outline-dark" href="#" data-clipboard-text="'
-          + link
-          + '"> Copy </a> '
-          + '<span class="URLdisplay">'
-          + link
-          + '</span></p>\n';
-		  
-	});
-
-	$('#gen-result').html(obj.htmlOutput);
-
-	// add URL copier event lister and handler
-      clipboard = new ClipboardJS( '#gen-result .copyURL' );
-      clipboard.on('success', function(e) {
-        $( '#gen-result .copyURL' ).html( ' Copy ' );
-        $( '#gen-result .copyURL' ).next().css( 'background','none' );
-        $( e.trigger ).html( 'Copied' );
-        $( e.trigger ).next().css( 'background-color','lightblue' );
-      });
-
-
+// add URL copier event lister and handler
+clipboard = new ClipboardJS('#gen-result .copyURL');
+clipboard.on('success', function(e) {
+    $('#gen-result .copyURL').html(' Copy ');
+    $('#gen-result .copyURL').next().css('background', 'none');
+    $(e.trigger).html('Copied');
+    $(e.trigger).next().css('background-color', 'lightgreen');
 });
 
-})(jQuery);
+$("#link-param").find("input[type=checkbox]").click(function() {
+    GenerateLinks();
+})
