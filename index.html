@@ -20,7 +20,7 @@
                 <div class="form-group row">
                     <label for="url-param-entry" class="col-2 col-form-label"><b>Page URL</b></label>
                     <div class="col-10">
-                        <input class="form-control" type="text" id="url-param-entry" aria-describedby="url-param-help" placeholder="http://example.com/dir/page.html">
+                        <input class="form-control" type="text" id="url-param-entry" aria-describedby="url-param-help" placeholder="http://example.com/dir/page.html" required>
                         <small id="url-param-help" class="form-text text-muted" > Copy and paste your URL.</small>
                     </div>
                 </div>
@@ -48,18 +48,37 @@
                         <small id="url-param-help" class="form-text text-muted">Used for paid search to identify keywords for your ad. (Normally not used)</small>
                     </div>
                 </div>
-            <div class="form-group" label for="source-entry" id="link-param"><b>Source</b> </label><br>
-            <input type="checkbox" name ="linkType" id="linktype0" data-source ="Internal" data-medium  = "internal"> Internal<br>
-            <input type="checkbox" name ="linkType" id="linktype1" data-source ="Campaigner" data-medium  = "email"> Campaigner<br>
-            <input type="checkbox" name ="linkType" id="linktype2" data-source ="Facebook" data-medium  = "social"> Facebook<br>
-            <input type="checkbox" name ="linkType" id="linktype3" data-source ="Twitter" data-medium  = "social"> Twitter<br>
-            <input type="checkbox" name ="linkType" id="linktype4" data-source ="LinkedIn" data-medium  = "social"> LinkedIn<br>
-            <input type="checkbox" name ="linkType" id="linktype5" data-source ="ManualEmail" data-medium  = "email"> Manual Email<br>
-        </div>
-        <br>
-        <!-- RESULTS -->
-        <div id="generated-url" class="">
-            <div class="p-3 mb-2 bg-light text-dark" id="gen-result">Results will appear here</div>
+                <!-- SOURCES
+                    (i) control your source and medium selections in this section
+                        using the data-source and data-medium attributes (option elements)
+                -->
+                <div class="row">
+                    <div class="col-2 col-form-label">
+                        <label for="source-param-entry"><b>Source/Medium</b></label>
+                    </div>
+                    <div class="form-group col-10">
+                        <select name="source" id="source-param-entry" class="form-control">
+                            <option selected>Select a source...</option>
+                            <option value="oshpd" data-source="oshpd.ca.gov" data-medium="Website">OSHPD Web Site</option>
+                            <option value="email" data-source="ManualEmail" data-medium="email">Manual Email</option>
+                            <option value="emailList" data-source="Campaigner" data-medium="email">Campaigner List</option>
+                            <option value="facebook" data-source="Facebook" data-medium="social">Facebook</option>
+                            <option value="twitter" data-source="Twitter" data-medium="social">Twitter</option>
+                            <option value="linkedin" data-source="LinkedIn" data-medium="social">LinkedIn</option>
+                        </select>
+                        <small id="url-param-help" class="form-text text-muted">Identifies where the link will be placed.</small>
+                    </div>
+                </div>
+                <!-- RESULTS -->
+                <div class="row">
+                    <div class="col-2 col-form-label">
+                        <p><b>Result</b></p>
+                    </div>
+                    <div class="form-group col-10">
+                        <span id="generated-url">Link will appear here.</span>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- bootstraps -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -67,6 +86,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
         <!-- dependencies -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-        <script src="main.js"></script>
+        <script src="index.js"></script>
     </body>
 </html>
